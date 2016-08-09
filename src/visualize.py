@@ -14,7 +14,7 @@ somelist = []
 def return_somelist():
     # create a new plot with a title and axis labels
     plot = figure(title="simple line example", x_axis_label='x',
-                  y_axis_label='y', x_range=[0, 100], y_range=[0, 100])
+                  y_axis_label='y', x_range=[0, 100], y_range=[0, 1])
 
     # add a line renderer with legend and line thickness
     plot.line(range(len(somelist)), somelist, legend="Temp.", line_width=2)
@@ -24,11 +24,12 @@ def return_somelist():
 
 
 def print_time(threadName, delay, counter):
-    while counter:
-        somelist.append(counter)
+    i = 1
+    while i <= counter:
+        somelist.append(1 / float(i))
         time.sleep(delay)
         print "%s: %s" % (threadName, time.ctime(time.time()))
-        counter -= 1
+        i += 1
 
 
 if __name__ == '__main__':
